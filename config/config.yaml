@@ -1,0 +1,6 @@
+samples:
+  SRR2073144 : SRR2073144
+  SRR2073145 : SRR2073145
+
+#fastq_SSR43 : 'fastq/SRR2073143.fastq'
+#fastq_SSR46 : 'fastq/SRR2073146.fastq'
