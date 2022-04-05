@@ -24,7 +24,7 @@ rule computeDEG_DESeq:
     message:
         'executing'
     shell:
-        '(Rscript {input.script} {input} {output}) 2> {log}'
+        '(Rscript {input.script} {input.merged} {output}) 2> {log}'
 
 rule computeDEG_edgeR:
     input:
