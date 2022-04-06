@@ -14,7 +14,7 @@ rule computeDEG_DESeq:
         script = 'workflow/scripts/DEG_DESeq.R',
         merged = 'htseq_counts/sample-1-sample-2.txt'
     output:
-        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-no-replicates-DESeq-results.csv'
+        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-DESeq-results.csv'
     benchmark:
         'benchmarks/computeDEG_DESeq.benchmark.txt'
     log:
@@ -22,7 +22,7 @@ rule computeDEG_DESeq:
     threads:
         2
     message:
-        'executing'
+        'computing Differentially Expressed Genes using DESeq'
     shell:
         '(Rscript {input.script} {input.merged} {output}) 2> {log}'
 
@@ -31,7 +31,7 @@ rule computeDEG_edgeR:
         script = 'workflow/scripts/DEG_edgeR.R',
         merged = 'htseq_counts/sample-1-sample-2.txt'
     output:
-        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-no-replicates-DESeq-results.csv'
+        'Sample-1-Sample-2-significant-padj-lessthan-0.05-edgeR-results.csv'
     benchmark:
         'benchmarks/computeDEG_edgeR.benchmark.txt'
     log:
@@ -39,6 +39,6 @@ rule computeDEG_edgeR:
     threads:
         2
     message:
-        'executing'
+        'computing Differentially Expressed Genes using edgeR'
     shell:
         '(Rscript {input.script} {input} {output}) 2> {log}'
