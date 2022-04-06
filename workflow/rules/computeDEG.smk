@@ -7,7 +7,8 @@ configfile: 'config/config.yaml'
 
 rule all:
     input:
-        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-no-replicates-DESeq-results.csv'
+        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-DESeq-results.csv',
+        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-edgeR-results.csv'
 
 rule computeDEG_DESeq:
     input:
@@ -31,7 +32,7 @@ rule computeDEG_edgeR:
         script = 'workflow/scripts/DEG_edgeR.R',
         merged = 'htseq_counts/sample-1-sample-2.txt'
     output:
-        'Sample-1-Sample-2-significant-padj-lessthan-0.05-edgeR-results.csv'
+        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-edgeR-results.csv'
     benchmark:
         'benchmarks/computeDEG_edgeR.benchmark.txt'
     log:
@@ -41,4 +42,4 @@ rule computeDEG_edgeR:
     message:
         'computing Differentially Expressed Genes using edgeR'
     shell:
-        '(Rscript {input.script} {input} {output}) 2> {log}'
+        '(Rscript {input.script} {input.merged} {output}) 2> {log}'
