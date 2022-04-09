@@ -1,0 +1,23 @@
+
+rule all:
+    input:
+        'results/expressionGenes.jpg'
+
+configfile: 'config/config.yaml'
+SAMPLES = ['SRR2073144', 'SRR2073145']
+
+include: 'rules/getdata.smk'
+include: 'rules/fastQC.smk'
+include: 'rules/cutadapt.smk'
+include: 'rules/align_reads.smk'
+include: 'rules/cufflinks.smk'
+include: 'rules/cuffmerge.smk'
+include: 'rules/cuffdif.smk'
+include: 'rules/samtools.smk'
+include: 'rules/htseq.smk' #append header
+include: 'rules/mergeReadCounts.smk'
+include: 'rules/computeDEG.smk'
+include: 'rules/extract_geneID.smk'
+include: 'rules/mergeGeneID.smk'
+include: 'rules/commonGenes.smk'
+include: 'rules/expressionCommonGenes.smk'

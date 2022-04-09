@@ -1,14 +1,15 @@
 """
-Counts the reads using HTSeq
-#htseq_count, count the reads from the sam and gtf files
+Runs DESeq and edgeR on the sample pairs to obtain differentially expressed genes.
+#computeDEG_DESeq, uses DESeq with an R script to obtain DEGs
+#computeDEG_edgeR, uses edgeR with an R script to obtain DEGs
 """
 
-configfile: 'config/config.yaml'
-
-rule all:
-    input:
-        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-DESeq-results.csv',
-        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-edgeR-results.csv'
+# configfile: 'config/config.yaml'
+#
+# rule all:
+#     input:
+#         'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-DESeq-results.csv',
+#         'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-edgeR-results.csv'
 
 rule computeDEG_DESeq:
     input:

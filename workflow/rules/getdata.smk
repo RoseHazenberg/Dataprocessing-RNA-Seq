@@ -1,15 +1,30 @@
-SAMPLES = ['SRR2073144', 'SRR2073145']
+"""
+Downloads the SRR2073144.sra and SRR2073145.sra and converts the SRA files to Fastq files.
+Prefetch is used to download and fastq-dump is used to convert to fastq.
+#download_and_convert, downloads the sra data with prefetch and convert the sra files into fastq files with fastq-dump
+for both sample SRR2073144 and SRR2073145
+"""
 
-rule all:
-    input:
-        expand('data/{sample}', sample = SAMPLES)
+# SAMPLES = ['SRR2073144', 'SRR2073145']
+#
+# # rule all:
+# #     input:
+# #         expand('sra_data/{sample}', sample = SAMPLES),
+# #         expand('fastq_data/{sample}', sample = SAMPLES)
 
-rule download:
+rule download_and_convert:
     params:
         '{sample}'
     output:
-        directory('data/{sample}')
+        sra = directory('sra_data/{sample}'),
+        fastq = directory('fastq_data/{sample}')
+    benchmark:
+        'benchmarks/{sample}.prefetch/fastq-dump.benchmark.txt'
+    log:
+        'logs/prefetch-fastq-dump/{sample}.log'
+    threads:
+        8
+    message:
+        'download file: {params} to {output.sra} and convert with fastq-dump to {output.fastq}'
     shell:
-        'prefetch {params} -O {output}'
-
-
+        '(prefetch {params} -O {output.sra} && fastq-dump {params} -O {output.fastq}) 2> {log}'
