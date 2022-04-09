@@ -1,0 +1,2 @@
+cufflinks/SRR2073144-cufflinks/transcripts.gtf
+cufflinks/SRR2073145-cufflinks/transcripts.gtf
