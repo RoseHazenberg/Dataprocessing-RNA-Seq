@@ -1,14 +1,11 @@
 """
-Transcript identification using cufflinks
+Transcript identification using cufflinks.
+Merges assembled transcriptome from gtf files with cuffmerge.
+Differential gene expression using cuffdiff from two samples.
 #cufflinks, uses cufflinks on both samples to identify transcripts.
+#cuffmerge, uses cuffmerge to merge assembled transcriptomes from gtf files
+#cuffdiff, uses cuffdiff to generate differentially expressed genes
 """
-
-# configfile: 'config/config.yaml'
-# SAMPLES = ['SRR2073144', 'SRR2073145']
-#
-# rule all:
-#     input:
-#         expand('cufflinks/{sample}-cufflinks', sample = SAMPLES)
 
 rule cufflinks:
     input:
@@ -27,3 +24,40 @@ rule cufflinks:
     shell:
         '(cufflinks -I 5000 --min-intron-length 40 -G {input.gtf} -p 6 -o {output} {input.bam}) 2> {log}'
 
+
+rule cuffmerge:
+    input:
+        gtf = config['annotation'],
+        fa = config['genome'],
+        assembly = config['assembly']
+    output:
+        'merged_asm/merged.gtf'
+    benchmark:
+        'benchmarks/cuffmerge.benchmark.txt'
+    log:
+        'logs/cuffmerge/cuffmerge.log'
+    threads:
+        4
+    message:
+        'executing cuffmerge with gtf files {input.gtf}'
+    shell:
+        '(cuffmerge -g {input.gtf} -s {input.fa} -p 6 {input.assembly} > log.out) 2> {log}'
+
+
+rule cuffdiff:
+    input:
+        bam = expand('alignment/{sample}-aligned-tophat/accepted_hits.bam', sample = config['samples']),
+        fa = config['genome'],
+        merged = config['merged']
+    output:
+        directory('cuffdiff/diff_out_quartile')
+    benchmark:
+        'benchmarks/cuffdiff.benchmark.txt'
+    log:
+        'logs/cuffdiff/out.log'
+    threads:
+        4
+    message:
+        'executing cuffdiff on {input.bam}'
+    shell:
+        '(cuffdiff -o {output} -b {input.fa} -p 6 -L SRR2073144,SRR2073145 -u {input.merged} {input.bam} --library-norm-method quartile --multi-read-correct) 2> {log}'
