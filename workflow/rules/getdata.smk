@@ -5,13 +5,6 @@ Prefetch is used to download and fastq-dump is used to convert to fastq.
 for both sample SRR2073144 and SRR2073145
 """
 
-# SAMPLES = ['SRR2073144', 'SRR2073145']
-#
-# # rule all:
-# #     input:
-# #         expand('sra_data/{sample}', sample = SAMPLES),
-# #         expand('fastq_data/{sample}', sample = SAMPLES)
-
 rule download_and_convert:
     params:
         '{sample}'
