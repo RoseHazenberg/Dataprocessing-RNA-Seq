@@ -3,13 +3,6 @@ Perform read alignment using tophat.
 #tophat_alignment, aligns reads for both the sample using tophat with multiple arguments
 """
 
-# configfile: 'config/config.yaml'
-# SAMPLES = ['SRR2073144', 'SRR2073145']
-#
-# rule all:
-#     input:
-#         expand('alignment/{sample}-aligned-tophat', sample = SAMPLES)
-
 rule tophat_alignment:
     input:
         SRA = 'cutadapt/{sample}_trimmed.fastq',
