@@ -1,23 +1,44 @@
-
-rule all:
-    input:
-        'results/expressionGenes.jpg'
-
 configfile: 'config/config.yaml'
 SAMPLES = ['SRR2073144', 'SRR2073145']
 
+rule all:
+    input:
+        expand('cutadapt/{sample}_trimmed.fastq', sample = SAMPLES),
+        expand('fastqc_reports/{sample}_fastqc.html', sample = SAMPLES),
+        expand('fastqc_reports/{sample}_fastqc.zip', sample = SAMPLES),
+        expand('fastqc_reports/{sample}_trimmed_fastqc.zip', sample = SAMPLES),
+        expand('fastqc_reports/{sample}_trimmed_fastqc.html', sample = SAMPLES),
+        expand('alignment/{sample}-aligned-tophat', sample = SAMPLES),
+        expand('cufflinks/{sample}-cufflinks', sample = SAMPLES),
+        'cuffdiff/diff_out_quartile',
+        expand('alignment/{sample}-samtools/accepted_hits.sam', sample = SAMPLES),
+        expand('htseq_counts/{sample}-read-counts.out', sample = SAMPLES),
+        'htseq_counts/sample-1-sample-2.txt',
+        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-DESeq-results.csv',
+        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-edgeR-results.csv'
+
+
+rule all_data:
+    input:
+        expand('sra_data/{sample}', sample = SAMPLES),
+        expand('fastq_data/{sample}', sample = SAMPLES)
+
+## pre-processing
 include: 'rules/getdata.smk'
 include: 'rules/fastQC.smk'
 include: 'rules/cutadapt.smk'
 include: 'rules/align_reads.smk'
+## transcript identification
 include: 'rules/cufflinks.smk'
-include: 'rules/cuffmerge.smk'
-include: 'rules/cuffdif.smk'
+## convert bam to sam
 include: 'rules/samtools.smk'
+## count reads
 include: 'rules/htseq.smk' #append header
-include: 'rules/mergeReadCounts.smk'
-include: 'rules/computeDEG.smk'
-include: 'rules/extract_geneID.smk'
-include: 'rules/mergeGeneID.smk'
-include: 'rules/commonGenes.smk'
-include: 'rules/expressionCommonGenes.smk'
+## merge the counts reads
+include: 'rules/merge_read_counts.smk'
+## obtains differentially expressed genes
+include: 'rules/compute_DEG.smk'
+# include: 'rules/extract_geneID.smk'
+# include: 'rules/merge_geneID.smk'
+# include: 'rules/common_genes.smk'
+# include: 'rules/expression_common_genes.smk'
