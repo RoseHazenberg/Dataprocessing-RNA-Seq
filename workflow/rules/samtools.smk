@@ -4,17 +4,11 @@ Converts the BAM files into SAM files using samtools.
 #samtools_view, convert bam into sam
 """
 
-# SAMPLES = ['SRR2073144', 'SRR2073145']
-#
-# rule all:
-#     input:
-#         expand('alignment/{sample}-aligned-tophat/accepted_hits.sam', sample = SAMPLES)
-
 rule samtools:
     input:
         bam = 'alignment/{sample}-aligned-tophat/accepted_hits.bam'
     output:
-        'alignment/{sample}-aligned-tophat/accepted_hits.sam'
+        'alignment/{sample}-samtools/accepted_hits.sam'
     benchmark:
         'benchmarks/{sample}.samtools.benchmark.txt'
     log:

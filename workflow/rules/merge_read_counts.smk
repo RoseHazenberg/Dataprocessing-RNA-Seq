@@ -1,6 +1,6 @@
 """
-Merges the read counts of the samples using gene identifier.
-#merge_read_counts, merges the read counts with an R script and appends headers with using sed
+Counts the reads using HTSeq
+#htseq_count, count the reads from the sam and gtf files
 """
 
 rule merge_read_counts:
@@ -17,7 +17,7 @@ rule merge_read_counts:
     threads:
         2
     message:
-        'executing merging reads count from {input.S44} and {input.S45} to generate {output}'
+        'executing'
     shell:
         """
         sed -i '1i GeneID\t\tSample-SRR2073144' {input.S44} &&
