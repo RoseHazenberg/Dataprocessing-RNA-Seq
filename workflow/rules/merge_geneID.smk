@@ -3,16 +3,6 @@ Merges DEG genes from cuffdiff, DESeq and edgeR in individual sample pairs.
 #mergeGeneID, merges the gene ids from cuffdiff, DESeq and edgeR
 """
 
-# configfile: 'config/config.yaml'
-#
-# rule all:
-#     input:
-#         'mergeGeneID/Sample-1-Sample-2-significantpadj-lessthan-0.05-Cuffdiff-results.csv',
-#         'mergeGeneID/Sample-1-Sample-2-significantpadj-lessthan-0.05-DESeq-results.csv',
-#         'mergeGeneID/Sample-1-Sample-2-significantpadj-lessthan-0.05-edgeR-results.csv',
-#         'mergeGeneID/Sample-1-2-common-genesCuffdiff-DESeq-edgeR.csv'
-
-
 rule mergeGeneID:
     input:
         script = 'workflow/scripts/mergeGeneIDCuffDiff.R',
