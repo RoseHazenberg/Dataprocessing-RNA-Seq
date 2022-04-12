@@ -1,15 +1,9 @@
 """
 Expression of the common genes using a matplot.
-#expressionGenes, expresses the common genes with an R script that produces an matplot as jpg
+#expression_genes, expresses the common genes with an R script that produces an matplot as jpg
 """
 
-# configfile: 'config/config.yaml'
-#
-# rule all:
-#     input:
-#         'results/expressionGenes.jpg'
-
-rule expressionGenes:
+rule expression_genes:
     input:
         script = 'workflow/scripts/expressionCommonGenes.R',
         common = 'mergeGeneID/Sample-1-2-common-genesCuffdiff-DESeq-edgeR.csv'

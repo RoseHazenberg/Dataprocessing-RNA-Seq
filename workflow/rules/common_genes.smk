@@ -1,16 +1,9 @@
 """
 Extracts the common genes from the cuffdiff, DESeq and edgeR files.
-#commonGenes, extract the common genes with an R script
+#common_genes, extract the common genes with an R script
 """
 
-# configfile: 'config/config.yaml'
-#
-# rule all:
-#     input:
-#         'commonGenes/Sample-1-2-common-genes-C-DE.csv',
-#         'commonGenes/Sample-1-2-common-genes-C-D-E-idname.csv'
-
-rule commonGenes:
+rule common_genes:
     input:
         script = 'workflow/scripts/extractCommonGenes.R',
         common = 'mergeGeneID/Sample-1-2-common-genesCuffdiff-DESeq-edgeR.csv'

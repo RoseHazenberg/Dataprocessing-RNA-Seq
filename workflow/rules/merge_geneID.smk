@@ -1,9 +1,9 @@
 """
 Merges DEG genes from cuffdiff, DESeq and edgeR in individual sample pairs.
-#mergeGeneID, merges the gene ids from cuffdiff, DESeq and edgeR
+#merge_geneID, merges the gene ids from cuffdiff, DESeq and edgeR
 """
 
-rule mergeGeneID:
+rule merge_geneID:
     input:
         script = 'workflow/scripts/mergeGeneIDCuffDiff.R',
         geneid = 'extract/geneid_genename.txt',

@@ -15,7 +15,15 @@ rule all:
         expand('htseq_counts/{sample}-read-counts.out', sample = SAMPLES),
         'htseq_counts/sample-1-sample-2.txt',
         'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-DESeq-results.csv',
-        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-edgeR-results.csv'
+        'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-edgeR-results.csv',
+        'extract/',
+        'mergeGeneID/Sample-1-Sample-2-significantpadj-lessthan-0.05-Cuffdiff-results.csv',
+        'mergeGeneID/Sample-1-Sample-2-significantpadj-lessthan-0.05-DESeq-results.csv',
+        'mergeGeneID/Sample-1-Sample-2-significantpadj-lessthan-0.05-edgeR-results.csv',
+        'mergeGeneID/Sample-1-2-common-genesCuffdiff-DESeq-edgeR.csv',
+        'commonGenes/Sample-1-2-common-genes-C-DE.csv',
+        'commonGenes/Sample-1-2-common-genes-C-D-E-idname.csv',
+        'results/expressionGenes.jpg'
 
 
 rule all_data:
@@ -38,7 +46,9 @@ include: 'rules/htseq.smk' #append header
 include: 'rules/merge_read_counts.smk'
 ## obtains differentially expressed genes
 include: 'rules/compute_DEG.smk'
-# include: 'rules/extract_geneID.smk'
-# include: 'rules/merge_geneID.smk'
-# include: 'rules/common_genes.smk'
-# include: 'rules/expression_common_genes.smk'
+## extract and merge gene id
+include: 'rules/extract_geneID.smk'
+include: 'rules/merge_geneID.smk'
+## find common genes and express
+include: 'rules/common_genes.smk'
+include: 'rules/expression_common_genes.smk'
