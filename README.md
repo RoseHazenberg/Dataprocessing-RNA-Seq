@@ -2,8 +2,9 @@
 
 RNA-Seq is a snakemake pipeline for data analysis and data processing. 
 RNA-Seq makes it possible to map the overall gene expression and thus the transcriptional activity of cells.  
-This project focuses thus on differential analysis of gene expression of Arabidopsis transcriptome.
+This project focuses thus on differential analysis of gene expression of Arabidopsis transcriptome.  
 
+RNA-Seq is a recreation of the project from [deshpan4 RNA-Seq-pipeline](https://github.com/deshpan4/RNA-Seq-pipeline).
 
 ## Repository structure
 Below is the repository structure after the workflow is executed.
