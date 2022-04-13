@@ -142,11 +142,11 @@ SRA data and fastq data are not available on GitHub because there are big but th
 The config file is stored in the folder `config`.  
 
 The results of each of the rules in `workflow/rules` can be found in the folder as described above in the repository structure. 
-Overall there are some plot, as seen below, and is stored in `results`.
+Overall there are some plot, as seen below, and is stored in `results`.  
 ![results/expressionGenes.jpg](results/expressionGenes.jpg)
 
 The volcano plot below shows the Differentially Expressed Genes create with egdeR.
-It shows the genes that are 'DOWN', 'UP' or 'Not' differential expressed.
+It shows the genes that are 'DOWN', 'UP' or 'Not' differential expressed.  
 ![results/volcanoPlot.jpg](results/volcanoPlot.jpg)
 
 ## Author and support
