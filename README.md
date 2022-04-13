@@ -46,7 +46,8 @@ Below is the repository structure after the workflow is executed.
 |                   ├── Bowtie2Index/
 |                   └── WholeGenomeFasta
 ├── results
-│   └── expressionGenes.jpg
+│   ├── expressionGenes.jpg
+│   └── volcanoPlot.jpg
 ├── sra_data
 │   ├── SRR2073144
 |   |   └── SRR2073144/
@@ -141,8 +142,9 @@ SRA data and fastq data are not available on GitHub because there are big but th
 The config file is stored in the folder `config`.  
 
 The results of each of the rules in `workflow/rules` can be found in the folder as described above in the repository structure. 
-Overall there is one plot as an outcome, see below, and is stored in `results`.
+Overall there are some plot, as seen below, and is stored in `results`.
 ![results/expressionGenes.jpg](results/expressionGenes.jpg)
+![results/volcanoPlot.jpg](results/volcanoPlot.jpg)
 
 ## Author and support
 For any information about the prerequisites, please visit the links, or for any information or questions, please contact the author.  

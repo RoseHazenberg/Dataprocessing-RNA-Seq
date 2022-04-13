@@ -23,7 +23,8 @@ rule all:
         'mergeGeneID/Sample-1-2-common-genesCuffdiff-DESeq-edgeR.csv',
         'commonGenes/Sample-1-2-common-genes-C-DE.csv',
         'commonGenes/Sample-1-2-common-genes-C-D-E-idname.csv',
-        'results/expressionGenes.jpg'
+        'results/expressionGenes.jpg',
+        'results/volcanoPlot.jpg'
 
 
 rule all_data:

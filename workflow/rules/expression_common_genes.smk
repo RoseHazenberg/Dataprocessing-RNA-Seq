@@ -6,9 +6,11 @@ Expression of the common genes using a matplot.
 rule expression_genes:
     input:
         script = 'workflow/scripts/expressionCommonGenes.R',
-        common = 'mergeGeneID/Sample-1-2-common-genesCuffdiff-DESeq-edgeR.csv'
+        common = 'mergeGeneID/Sample-1-2-common-genesCuffdiff-DESeq-edgeR.csv',
+        edgeR = 'DEG/Sample-1-Sample-2-significant-padj-lessthan-0.05-edgeR-results.csv'
     output:
-        'results/expressionGenes.jpg'
+        matplot = 'results/expressionGenes.jpg',
+        volcano = 'results/volcanoPlot.jpg'
     benchmark:
         'benchmarks/commonGenesExpression.benchmark.txt'
     log:
@@ -16,6 +18,7 @@ rule expression_genes:
     threads:
         2
     message:
-        'expression of common genes with an R script {input.script} on {input.common} to create {output}'
+        'expression of common genes with an R script {input.script} on {input.common} and {input.edgeR} '
+        'to create {output.matplot} and {output.volcano}'
     shell:
-        '(Rscript {input.script} {input.common} {output}) 2> {log}'
+        '(Rscript {input.script} {input.common} {output.matplot} {input.edgeR} {output.volcano}) 2> {log}'
