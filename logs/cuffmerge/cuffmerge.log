@@ -1,0 +1,30 @@
+[22:32:33] Loading reference annotation.
+[22:32:35] Loading reference annotation.
+Warning: Could not connect to update server to verify current version. Please check at the Cufflinks website (http://cufflinks.cbcb.umd.edu).
+Command line:
+cufflinks -o ./merged_asm/ -F 0.05 -g references/Arabidopsis_thaliana/Ensembl/TAIR10/Annotation/Genes/genes.gtf -q --overhang-tolerance 200 --library-type=transfrags -A 0.0 --min-frags-per-transfrag 0 --no-5-extend -p 6 ./merged_asm/tmp/mergeSam_tmpve6ayi9r 
+[bam_header_read] EOF marker is absent. The input is probably truncated.
+[bam_header_read] invalid BAM binary header (this is not a BAM file).
+File ./merged_asm/tmp/mergeSam_tmpve6ayi9r doesn't appear to be a valid BAM file, trying SAM...
+[22:32:40] Loading reference annotation.
+[22:32:52] Inspecting reads and determining fragment length distribution.
+Processed 30490 loci.                       
+> Map Properties:
+>	Normalized Map Mass: 67309.00
+>	Raw Map Mass: 67309.00
+>	Fragment Length Distribution: Truncated Gaussian (default)
+>	              Default Mean: 200
+>	           Default Std Dev: 80
+[22:32:53] Assembling transcripts and estimating abundances.
+Processed 30490 loci.                       
+Warning: Could not connect to update server to verify current version. Please check at the Cufflinks website (http://cufflinks.cbcb.umd.edu).
+Warning: Could not connect to update server to verify current version. Please check at the Cufflinks website (http://cufflinks.cbcb.umd.edu).
+
+[Mon Apr 11 22:32:29 2022] Beginning transcriptome assembly merge
+-------------------------------------------
+
+[Mon Apr 11 22:32:29 2022] Preparing output location ./merged_asm/
+[Mon Apr 11 22:32:32 2022] Converting GTF files to SAM
+[Mon Apr 11 22:32:40 2022] Quantitating transcripts
+[Mon Apr 11 22:34:04 2022] Comparing against reference file references/Arabidopsis_thaliana/Ensembl/TAIR10/Annotation/Genes/genes.gtf
+[Mon Apr 11 22:34:21 2022] Comparing against reference file references/Arabidopsis_thaliana/Ensembl/TAIR10/Annotation/Genes/genes.gtf

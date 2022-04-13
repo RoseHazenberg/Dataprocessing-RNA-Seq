@@ -1,0 +1,31 @@
+
+[2022-04-11 21:16:54] Beginning TopHat run (v2.1.1)
+-----------------------------------------------
+[2022-04-11 21:16:54] Checking for Bowtie
+		  Bowtie version:	 2.3.5.1
+[2022-04-11 21:16:55] Checking for Bowtie index files (genome)..
+[2022-04-11 21:16:55] Checking for reference FASTA file
+[2022-04-11 21:16:55] Generating SAM header for references/Arabidopsis_thaliana/Ensembl/TAIR10/Sequence/Bowtie2Index/genome
+[2022-04-11 21:16:56] Reading known junctions from GTF file
+[2022-04-11 21:17:03] Preparing reads
+	 left reads: min. length=35, max. length=36, 32704604 kept reads (4552 discarded)
+[2022-04-11 21:22:46] Building transcriptome data files alignment/SRR2073144-aligned-tophat/tmp/genes
+[2022-04-11 21:23:06] Building Bowtie index from genes.fa
+[2022-04-11 21:24:43] Mapping left_kept_reads to transcriptome genes with Bowtie2 
+[2022-04-11 21:37:11] Resuming TopHat pipeline with unmapped reads
+Warning: you have only one segment per read.
+	If the read length is greater than or equal to 45bp,
+	we strongly recommend that you decrease --segment-length to about half the read length because TopHat will work better with multiple segments
+[2022-04-11 21:37:11] Mapping left_kept_reads.m2g_um to genome genome with Bowtie2 
+[2022-04-11 21:37:39] Searching for junctions via segment mapping
+	Coverage-search algorithm is turned on, making this step very slow
+	Please try running TopHat again with the option (--no-coverage-search) if this step takes too much time or memory.
+[2022-04-11 21:37:59] Retrieving sequences for splices
+[2022-04-11 21:38:04] Indexing splices
+Building a SMALL index
+[2022-04-11 21:38:11] Mapping left_kept_reads.m2g_um_unmapped to genome segment_juncs with Bowtie2 (1/1)
+[2022-04-11 21:38:12] Joining segment hits
+[2022-04-11 21:38:27] Reporting output tracks
+-----------------------------------------------
+[2022-04-11 21:55:25] A summary of the alignment counts can be found in alignment/SRR2073144-aligned-tophat/align_summary.txt
+[2022-04-11 21:55:25] Run complete: 00:38:30 elapsed
