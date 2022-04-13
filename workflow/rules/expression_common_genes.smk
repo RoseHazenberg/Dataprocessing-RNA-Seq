@@ -16,6 +16,6 @@ rule expression_genes:
     threads:
         2
     message:
-        'expression of common genes'
+        'expression of common genes with an R script {input.script} on {input.common} to create {output}'
     shell:
         '(Rscript {input.script} {input.common} {output}) 2> {log}'

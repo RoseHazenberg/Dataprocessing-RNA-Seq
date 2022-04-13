@@ -14,7 +14,7 @@ rule tophat_alignment:
     log:
         'logs/tophat-aligned/{sample}.log'
     threads:
-        8
+        4
     message:
         'executing tophat on {input.SRA} which produces {output}'
     shell:

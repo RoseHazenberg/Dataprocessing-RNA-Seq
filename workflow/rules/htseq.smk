@@ -14,7 +14,7 @@ rule htseq_count:
     log:
         'logs/htseq/{sample}.log'
     threads:
-        16
+        4
     message:
         'executing htseq-count {input.sam} with {input.gtf} to generate {output}'
     shell:

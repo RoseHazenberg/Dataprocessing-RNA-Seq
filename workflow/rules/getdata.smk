@@ -16,7 +16,7 @@ rule download_and_convert:
     log:
         'logs/prefetch-fastq-dump/{sample}.log'
     threads:
-        8
+        4
     message:
         'download file: {params} to {output.sra} and convert with fastq-dump to {output.fastq}'
     shell:

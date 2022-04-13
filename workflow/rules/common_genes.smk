@@ -1,6 +1,6 @@
 """
 Extracts the common genes from the cuffdiff, DESeq and edgeR files.
-#common_genes, extract the common genes with an R script
+#common_genes, extract the common genes and gene id names with an R script
 """
 
 rule common_genes:
@@ -17,6 +17,6 @@ rule common_genes:
     threads:
         2
     message:
-        'extracting common genes'
+        'extracting common genes from {input.common} with an R script {input.script} to generate {output.csv} and {output.idname}'
     shell:
         '(Rscript {input.script} {input.common} {output.csv} {output.idname}) 2> {log}'

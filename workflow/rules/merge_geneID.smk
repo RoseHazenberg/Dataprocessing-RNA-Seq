@@ -1,6 +1,6 @@
 """
 Merges DEG genes from cuffdiff, DESeq and edgeR in individual sample pairs.
-#merge_geneID, merges the gene ids from cuffdiff, DESeq and edgeR
+#merge_geneID, merges the geneid name from cuffdiff, DESeq and edgeR
 """
 
 rule merge_geneID:
@@ -22,6 +22,6 @@ rule merge_geneID:
     threads:
         2
     message:
-        'merging gene id'
+        'merging geneid name from {input.geneid} {input.cuf} {input.deseq} {input.egdeR} to create {output}'
     shell:
         '(Rscript {input.script} {input.cuf} {input.deseq} {input.egdeR} {input.geneid} {output.cuf} {output.deseq} {output.edgeR} {output.both}) 2> {log}'

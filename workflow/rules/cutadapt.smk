@@ -15,6 +15,6 @@ rule cutadapt:
     threads:
         4
     message:
-        'executing cutadapt on {input} which generates {output}'
+        'executing cutadapt on {input} with -u 15 to generate {output}'
     shell:
         '(cutadapt -u 15 -o {output} {input}) 2> {log}'

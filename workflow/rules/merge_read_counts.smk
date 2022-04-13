@@ -1,6 +1,6 @@
 """
-Counts the reads using HTSeq
-#htseq_count, count the reads from the sam and gtf files
+Merges the read counts with an R script.
+#merge_read_counts, merges the read counts from the htseq-count output
 """
 
 rule merge_read_counts:
@@ -17,7 +17,7 @@ rule merge_read_counts:
     threads:
         2
     message:
-        'executing'
+        'merge {input.S44} and {input.S45} with {input.script} to generate {output}'
     shell:
         """
         sed -i '1i GeneID\t\tSample-SRR2073144' {input.S44} &&

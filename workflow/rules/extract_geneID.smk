@@ -3,8 +3,6 @@ Extract the gene IDs, performing commands in the shell.
 #extract_geneID, extract the gene name and id from merged.gtf
 """
 
-# configfile: 'config/config.yaml'
-
 rule extract_geneID:
     input:
         gtf = 'merged_asm/merged.gtf'
@@ -15,9 +13,9 @@ rule extract_geneID:
     log:
         'logs/extract/extractGeneID.log'
     threads:
-        4
+        2
     message:
-        'extracting gene id from {input.gtf}'
+        'extracting gene id from {input.gtf} to the directory {output}'
     shell:
         """
         (cut -f9 {input.gtf} > extract/col-9.txt &&

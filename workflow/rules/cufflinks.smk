@@ -37,9 +37,9 @@ rule cuffmerge:
     log:
         'logs/cuffmerge/cuffmerge.log'
     threads:
-        4
+        8
     message:
-        'executing cuffmerge with gtf files {input.gtf}'
+        'executing cuffmerge with {input.gtf} {input.fa} {input.assembly}'
     shell:
         '(cuffmerge -g {input.gtf} -s {input.fa} -p 6 {input.assembly} > log.out) 2> {log}'
 
@@ -56,8 +56,8 @@ rule cuffdiff:
     log:
         'logs/cuffdiff/out.log'
     threads:
-        4
+        8
     message:
-        'executing cuffdiff on {input.bam}'
+        'executing cuffdiff on {input.bam} with {input.fa} {input.merged} to generate {output}'
     shell:
         '(cuffdiff -o {output} -b {input.fa} -p 6 -L SRR2073144,SRR2073145 -u {input.merged} {input.bam} --library-norm-method quartile --multi-read-correct) 2> {log}'

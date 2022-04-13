@@ -1,7 +1,6 @@
 """
 Converts the BAM files into SAM files using samtools.
-#samtools_index, index bam files
-#samtools_view, convert bam into sam
+#samtools, first it indexes BAM files with samtools index and then it generates SAM files with samtools view -h
 """
 
 rule samtools:
@@ -14,7 +13,7 @@ rule samtools:
     log:
         'logs/samtools/{sample}.log'
     threads:
-        8
+        4
     message:
         'executing samtools index on {input.bam} and samtools view on {input.bam} to generate {output}'
     shell:

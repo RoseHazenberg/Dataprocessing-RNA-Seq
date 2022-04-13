@@ -17,7 +17,7 @@ rule compute_DEG_DESeq:
     threads:
         2
     message:
-        'computing Differentially Expressed Genes using DESeq'
+        'computing Differentially Expressed Genes from {input.merged} using DESeq'
     shell:
         '(Rscript {input.script} {input.merged} {output}) 2> {log}'
 
@@ -34,6 +34,6 @@ rule compute_DEG_edgeR:
     threads:
         2
     message:
-        'computing Differentially Expressed Genes using edgeR'
+        'computing Differentially Expressed Genes from {input.merged} using edgeR'
     shell:
         '(Rscript {input.script} {input.merged} {output}) 2> {log}'
