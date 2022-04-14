@@ -91,7 +91,7 @@ sratoolkit and tophat should be located within this project.
   * instead of wget by downloading tophat, just copy the link in the browser then it will download
 * cufflinks
 * cuffmerge
-  * I got an [cuffmerge ValueError](https://githubhot.com/repo/cole-trapnell-lab/cufflinks/issues/130), if you get this please apply a patch as described in the link to make it work
+  * If you get an [cuffmerge ValueError](https://githubhot.com/repo/cole-trapnell-lab/cufflinks/issues/130), please apply a patch as described in the link to make it work
 * cuffdiff
 * samtools
 * htseq
